@@ -17,7 +17,7 @@ export class Task {
 		}
 		
 		this._taskData = {
-			context,
+			context: context === null ? this : context,
 			enabled: true,
 			index: 0,
 			tasks,
@@ -63,19 +63,6 @@ export class Task {
 	}
 	
 	/**
-	 * Change the current task to the last task.
-	 */
-	last() {
-		if (!this._taskData.tasks.length) {
-			return this;
-		}
-		
-		this._taskData.current = this._taskData.tasks[this._taskData.index = this._taskData.tasks.length - 1];
-		
-		return this;
-	}
-	
-	/**
 	 * Change the current task to the previos task.
 	 */
 	prev() {
@@ -110,6 +97,61 @@ export class Task {
 		}
 		
 		this._taskData.current = this._taskData.tasks[this._taskData.index = Number(index)];
+		
+		return this;
+	}
+	
+	/**
+	 * Cancel all tasks and leave them unregistered.
+	 * @since 1.0.1
+	 */
+	reset() {
+		this._taskData.tasks = [];
+		this._taskData.current = null;
+		this._taskData.index = 0;
+		
+		return this;
+	}
+	
+	/**
+	 * Add the task to the end of the list.
+	 * @since 1.0.1
+	 */
+	add(funcs: TTaskDelegate | TTaskDelegate[]) {
+		if (funcs instanceof Function) {
+			funcs = [funcs];
+		}
+		
+		const tasks: TTaskDelegate[] = this._taskData.tasks;
+		const f = tasks.length === 0;
+		
+		for (let i = 0; i < funcs.length; i++) {
+			tasks.push(funcs[i]);
+		}
+			
+		if (f) {
+ 			this.first();
+		}
+		
+		return this;
+	}
+	
+	/**
+	 * Replace the task list with the new task list.
+	 * @since 1.0.1
+	 */
+	replace(funcs: TTaskDelegate | TTaskDelegate[]) {
+		if (funcs instanceof Function) {
+			funcs = [funcs];
+		}
+		
+		this.reset();
+		
+		const tasks: TTaskDelegate[] = this._taskData.tasks;
+		
+		this._taskData.tasks = funcs;
+		
+		this.first();
 		
 		return this;
 	}

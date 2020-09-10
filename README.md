@@ -89,13 +89,9 @@ const task = new Task([
 	},
 	function() {
 		return 3;
-	},
-	function() {
-		return 4;
 	}
 ]);
 
-console.log(task.last().done()); // 4
 console.log(task.first().done()); // 1
 console.log(task.next().done()); // 2
 console.log(task.prev().done()); // 1
@@ -120,11 +116,56 @@ const task = new Task([
 ]);
 
 task.enabled = false;
-console.log(task.last().done()); // undefined
 console.log(task.first().done()); // undefined
 console.log(task.next().done()); // undefined
 console.log(task.prev().done()); // undefined
 console.log(task.to(2).done()); // undefined
+```
+
+### Add
+```javascript
+const task = new Task([
+	function() {
+		return 1
+	}
+])
+.add(function() {
+	return 2;
+});
+
+console.log(task.next().done()); // 2
+```
+
+### Replace
+```javascript
+const task = new Task([
+	function() {
+		return 1
+	}
+])
+.replace([
+	function() {
+		return 2;
+	},
+	function() {
+		return 5;
+	}
+]);
+
+console.log(task.first().done()); // 2
+console.log(task.next().done()); // 5
+```
+
+### Reset
+```javascript
+const task = new Task([
+	function() {
+		return 1
+	}
+])
+.reset();
+
+console.log(task.first().done()); // undefined
 ```
 
 ### Send arguments

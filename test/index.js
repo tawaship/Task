@@ -96,13 +96,51 @@ describe('Task', () => {
 		});
 	}
 	
-	const task = new Task([
-		function() {
-			return 1;
-		}
-	]);
+	it('add', () => {
+		const task = new Task([
+			function() {
+				return this.next().done();
+			}
+		]);
+		
+		task.add(function() {
+			return 2;
+		});
+		
+		assert.equal(task.first().done(), 2);
+	});
+	
+	it('replace', () => {
+		const task = new Task([
+			function() {
+				return 1;
+			}
+		]);
+		
+		task.replace(function() {
+			return 2;
+		});
+		
+		assert.equal(task.first().done(), 2);
+	});
+	
+	it('reset', () => {
+		const task = new Task([
+			function() {
+				return 1;
+			}
+		]);
+		
+		assert.equal(task.reset().done(), undefined);
+	});
 	
 	it('destroy', () => {
+		const task = new Task([
+			function() {
+				return 1;
+			}
+		]);
+		
 		task.destroy();
 		assert.equal(task.first().done(), undefined);
 	});

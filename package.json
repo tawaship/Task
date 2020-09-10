@@ -1,6 +1,6 @@
 {
   "name": "@tawaship/task",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/Task.cjs.js",
   "module": "dist/Task.esm.js",
@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/tawaship/Task/issues"
   },
-  "homepage": "https://github.com/tawaship/Task#readme",
+  "homepage": "https://tawaship.github.io/Task",
   "devDependencies": {
     "@rollup/plugin-buble": "^0.21.1",
     "@rollup/plugin-commonjs": "^11.0.2",
