@@ -1,0 +1,306 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@tawaship/task - v1.0.0</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@tawaship/task - v1.0.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>@tawaship/task - v1.0.0</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#tawashiptask" id="tawashiptask" style="color: inherit; text-decoration: none;">
+					<h1>@tawaship/task</h1>
+				</a>
+				<p>Process tasks serially.</p>
+				<p><a href="https://travis-ci.org/tawaship/Task"><img src="https://travis-ci.org/tawaship/Task.svg?branch=master" alt="Build Status"></a>
+				<a href="LICENSE"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="MIT License"></a></p>
+				<hr>
+				<a href="#how-to-install" id="how-to-install" style="color: inherit; text-decoration: none;">
+					<h2>How to install</h2>
+				</a>
+				<ol>
+					<li>on you npm project</li>
+				</ol>
+				<pre><code class="language-sh">npm install --save @tawaship/task</code></pre>
+				<ol start="2">
+					<li>on your code</li>
+				</ol>
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { Task } <span class="hljs-keyword">from</span> <span class="hljs-string">'@tawaship/task'</span>;
+
+<span class="hljs-comment">// or</span>
+
+<span class="hljs-keyword">const</span> { Task } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@tawaship/task'</span>);</code></pre>
+				<a href="#how-to-build" id="how-to-build" style="color: inherit; text-decoration: none;">
+					<h2>How to build</h2>
+				</a>
+				<pre><code class="language-sh">git <span class="hljs-built_in">clone</span> https://github.com/tawaship/Task
+
+<span class="hljs-built_in">cd</span> Emitter
+
+npm install
+
+npm run build</code></pre>
+				<a href="#how-to-load-on-browser" id="how-to-load-on-browser" style="color: inherit; text-decoration: none;">
+					<h2>How to load on browser</h2>
+				</a>
+				<p>After <a href="#how-to-install">install</a> or <a href="#how-to-build">build</a></p>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/path/to/dist/Task.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<a href="#single" id="single" style="color: inherit; text-decoration: none;">
+					<h3>Single</h3>
+				</a>
+				<pre><code class="language-javascript"><span class="hljs-keyword">let</span> a = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">const</span> task = <span class="hljs-keyword">new</span> Task(
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        a++;
+    }
+);
+
+task.done();
+<span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 1</span>
+
+task.done();
+<span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 2</span></code></pre>
+				<a href="#chaining" id="chaining" style="color: inherit; text-decoration: none;">
+					<h3>Chaining</h3>
+				</a>
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> task = <span class="hljs-keyword">new</span> Task([
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> task.next().done();
+    },
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-number">3</span>;
+    }
+]);
+
+<span class="hljs-built_in">console</span>.log(task.done()); <span class="hljs-comment">// 3</span></code></pre>
+				<a href="#change-position" id="change-position" style="color: inherit; text-decoration: none;">
+					<h3>Change position</h3>
+				</a>
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> task = <span class="hljs-keyword">new</span> Task([
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+    },
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;
+    },
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-number">3</span>;
+    },
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-number">4</span>;
+    }
+]);
+
+<span class="hljs-built_in">console</span>.log(task.last().done()); <span class="hljs-comment">// 4</span>
+<span class="hljs-built_in">console</span>.log(task.first().done()); <span class="hljs-comment">// 1</span>
+<span class="hljs-built_in">console</span>.log(task.next().done()); <span class="hljs-comment">// 2</span>
+<span class="hljs-built_in">console</span>.log(task.prev().done()); <span class="hljs-comment">// 1</span>
+<span class="hljs-built_in">console</span>.log(task.to(<span class="hljs-number">2</span>).done()); <span class="hljs-comment">// 3</span></code></pre>
+				<a href="#disabled" id="disabled" style="color: inherit; text-decoration: none;">
+					<h3>Disabled</h3>
+				</a>
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> task = <span class="hljs-keyword">new</span> Task([
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+    },
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;
+    },
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-number">3</span>;
+    },
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-number">4</span>;
+    }
+]);
+
+task.enabled = <span class="hljs-literal">false</span>;
+<span class="hljs-built_in">console</span>.log(task.last().done()); <span class="hljs-comment">// undefined</span>
+<span class="hljs-built_in">console</span>.log(task.first().done()); <span class="hljs-comment">// undefined</span>
+<span class="hljs-built_in">console</span>.log(task.next().done()); <span class="hljs-comment">// undefined</span>
+<span class="hljs-built_in">console</span>.log(task.prev().done()); <span class="hljs-comment">// undefined</span>
+<span class="hljs-built_in">console</span>.log(task.to(<span class="hljs-number">2</span>).done()); <span class="hljs-comment">// undefined</span></code></pre>
+				<a href="#send-arguments" id="send-arguments" style="color: inherit; text-decoration: none;">
+					<h3>Send arguments</h3>
+				</a>
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> task = <span class="hljs-keyword">new</span> Task(
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a, b, c</span>) </span>{
+        <span class="hljs-built_in">console</span>.log(a, b, c); <span class="hljs-comment">// 1 2 3</span>
+    }
+);
+task.done(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);</code></pre>
+				<a href="#specify-the-context" id="specify-the-context" style="color: inherit; text-decoration: none;">
+					<h3>Specify the context</h3>
+				</a>
+				<pre><code class="language-javascript"><span class="hljs-keyword">let</span> a = {<span class="hljs-attr">hoge</span>: <span class="hljs-number">1</span>};
+<span class="hljs-keyword">const</span> task = <span class="hljs-keyword">new</span> Task(
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">this</span>.moga = <span class="hljs-number">2</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+    }
+, a);
+
+<span class="hljs-built_in">console</span>.log(task.done()); <span class="hljs-comment">// { hoge: 1, moga: 2 }</span></code></pre>
+				<p>However, using the arrow function invalidates the context specification.</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// on window</span>
+<span class="hljs-keyword">let</span> a = {<span class="hljs-attr">hoge</span>: <span class="hljs-number">1</span>};
+<span class="hljs-keyword">const</span> task = <span class="hljs-keyword">new</span> Task(
+    <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+    }
+, a);
+
+<span class="hljs-built_in">console</span>.log(task.done()); <span class="hljs-comment">// Window</span></code></pre>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/task.html" class="tsd-kind-icon">Task</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/itaskdata.html" class="tsd-kind-icon">ITask<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#ttaskdelegate" class="tsd-kind-icon">TTask<wbr>Delegate</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

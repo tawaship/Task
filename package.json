@@ -1,0 +1,39 @@
+{
+  "name": "@tawaship/task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/Task.cjs.js",
+  "module": "dist/Task.esm.js",
+  "types": "types/module.d.ts",
+  "scripts": {
+    "rollup": "rollup -c",
+    "d": "tsc --target ES5 --emitDeclarationOnly",
+    "docs": "typedoc src/",
+    "test": "npm run rollup && npm run check",
+    "check": "mocha test/index.js",
+    "build": "ENV PROD=1 npm run rollup && npm run check && npm run docs && npm run d && echo done."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tawaship/Task.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tawaship/Task/issues"
+  },
+  "homepage": "https://github.com/tawaship/Task#readme",
+  "devDependencies": {
+    "@rollup/plugin-buble": "^0.21.1",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@rollup/plugin-typescript": "^3.0.0",
+    "del": "^5.1.0",
+    "mocha": "^7.1.0",
+    "rollup": "^1.31.1",
+    "rollup-plugin-terser": "^5.2.0",
+    "tslib": "^1.11.0",
+    "typedoc": "^0.16.10",
+    "typescript": "^3.8.2"
+  }
+}
