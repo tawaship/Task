@@ -2,7 +2,7 @@
 
 Process tasks serially.
 
-[![Build Status](https://travis-ci.org/tawaship/Task.svg?branch=master)](https://travis-ci.org/tawaship/Task)
+[![Build Status](https://travis-ci.com/tawaship/Task.svg?branch=master)](https://travis-ci.com/tawaship/Task)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
 ---

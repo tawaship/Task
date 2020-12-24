@@ -7,7 +7,7 @@ describe('Task', () => {
 			return 10;
 		});
 		
-		assert.equal(task.done(), 10);
+		assert.equal(task.first().done(), 10);
 	});
 	
 	it('chaining', () => {
@@ -23,7 +23,7 @@ describe('Task', () => {
 				}
 			]);
 			
-			task.done()
+			task.first().done()
 		});
 	});
 	
@@ -33,7 +33,7 @@ describe('Task', () => {
 			return this;
 		}, a);
 		
-		assert.equal(task.done(), a);
+		assert.equal(task.first().done(), a);
 	});
 	
 	it('args', () => {
@@ -41,7 +41,7 @@ describe('Task', () => {
 			assert.ok(a === 1 && b === 2 && c === 3);
 		});
 		
-		task.done(1, 2, 3);
+		task.first().done(1, 2, 3);
 	});
 	
 	{
@@ -49,57 +49,62 @@ describe('Task', () => {
 		
 		const task = new Task([
 			function() {
-				p = 1;
+				return 1;
 			},
 			function() {
-				p = 2;
+				return 2;
 			},
 			function() {
-				p = 3
+				return 3
 			}
 		]);
 			
 		it('execute first', () => {
-			task.first().done();
-			assert.equal(p, 1);
+			assert.ok(task.first().done() === task.value && task.value === 1);
 		});
 		
 		it('execute next', () => {
-			task.next().done();
-			assert.equal(p, 2);
+			assert.ok(task.next().done() === task.value && task.value === 2);
 		});
 		
 		it('execute prev', () => {
-			task.prev().done();
-			assert.equal(p, 1);
+			assert.ok(task.prev().done() === task.value && task.value === 1);
 		});
 		
 		it('execute to', () => {
-			task.to(2).done();
-			assert.equal(p, 3);
+			assert.ok(task.to(2).done() === task.value && task.value === 3);
 		});
 		
 		it('execute prev from first', () => {
-			task.first().prev().done();
-			assert.equal(p, 1);
+			assert.ok(task.first().prev().done() === undefined && task.value === 3);
 		});
 		
 		it('execute next from last', () => {
-			task.to(2).next().done();
-			assert.equal(p, 3);
+			assert.ok(task.to(2).next().done() === undefined && task.value === 3);
 		});
 		
 		it('disabled', () => {
 			task.enabled = false;
 			task.first().done();
-			assert.equal(p, 3);
+			assert.equal(task.value, 3);
 		});
 	}
+	
+	it('finish', () => {
+		const task = new Task([
+			function() {
+				return 1;
+			}
+		]);
+		task.first().done();
+		
+		assert.ok(task.finish().done() === undefined);
+	});
 	
 	it('add', () => {
 		const task = new Task([
 			function() {
-				return this.next().done();
+				return 1;
 			}
 		]);
 		
@@ -107,21 +112,7 @@ describe('Task', () => {
 			return 2;
 		});
 		
-		assert.equal(task.first().done(), 2);
-	});
-	
-	it('replace', () => {
-		const task = new Task([
-			function() {
-				return 1;
-			}
-		]);
-		
-		task.replace(function() {
-			return 2;
-		});
-		
-		assert.equal(task.first().done(), 2);
+		assert.equal(task.first().next().done(), 2);
 	});
 	
 	it('reset', () => {
@@ -131,7 +122,8 @@ describe('Task', () => {
 			}
 		]);
 		
-		assert.equal(task.reset().done(), undefined);
+		task.first().done();
+		assert.ok(task.reset().done() === undefined && task.first().done() === undefined && task.value === null);
 	});
 	
 	it('destroy', () => {
@@ -142,6 +134,6 @@ describe('Task', () => {
 		]);
 		
 		task.destroy();
-		assert.equal(task.first().done(), undefined);
+		assert.ok(task.first().done() === undefined && task.value === null);
 	});
 });

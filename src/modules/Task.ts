@@ -1,30 +1,31 @@
-export interface ITaskData {
-	context: any,
-	enabled: boolean,
-	index: number,
-	tasks: TTaskDelegate[],
-	current: TTaskDelegate | null
+export interface ITaskDelegate {
+	(...args: any[]): any;
 }
 
-export type TTaskDelegate = (...args: any) => any;
+/**
+ * @private
+ */
+interface ITaskData {
+	context: any;
+	enabled: boolean;
+	index: number;
+	callbacks: ITaskDelegate[];
+	value: any;
+}
 
 export class Task {
 	protected _taskData: ITaskData;
 	
-	constructor(tasks: TTaskDelegate | TTaskDelegate[], context: any = null) {
-		if (tasks instanceof Function) {
-			tasks = [tasks];
-		}
-		
+	constructor(callbacks: ITaskDelegate | ITaskDelegate[], context?: unknown) {
 		this._taskData = {
-			context: context === null ? this : context,
+			context: context == null ? this : context,
 			enabled: true,
-			index: 0,
-			tasks,
-			current: null
+			index: -1,
+			callbacks: [],
+			value: null
 		};
 		
-		this.first();
+		this.add(callbacks);
 	}
 	
 	/**
@@ -39,119 +40,93 @@ export class Task {
 	}
 	
 	/**
+	 * Add the task to the end of the list.
+	 */
+	add(callbacks: ITaskDelegate | ITaskDelegate[]) {
+		if (!Array.isArray(callbacks)) {
+			callbacks = [callbacks];
+		}
+		
+		const list = this._taskData.callbacks;
+		const flag = list.length === 0;
+		
+		for (let i = 0; i < callbacks.length; i++) {
+			if (!(callbacks[i] instanceof Function)) {
+				continue;
+			}
+			
+			list.push(callbacks[i]);
+		}
+		
+		return this;
+	}
+	
+	/**
 	 * Execute the current task.
 	 */
 	done(...args: any[]): any {
-		if (!this._taskData.enabled || !this._taskData.current) {
+		if (!this._taskData.enabled) {
 			return;
 		}
 		
-		return this._taskData.current.apply(this._taskData.context, args);
+		const task = this._taskData.callbacks[this._taskData.index];
+		if (!task) {
+			return;
+		}
+		
+		return this._taskData.value = task.apply(this._taskData.context, args);
+	}
+	
+	private _to(index: number) {
+		this._taskData.index = Number(index);
+		
+		return this;
 	}
 	
 	/**
 	 * Change the current task to the first task.
 	 */
 	first() {
-		if (!this._taskData.tasks[0]) {
-			return this;
-		}
-		
-		this._taskData.current = this._taskData.tasks[this._taskData.index = 0];
-		
-		return this;
+		return this._to(0);
 	}
 	
 	/**
 	 * Change the current task to the previos task.
 	 */
 	prev() {
-		if (!this._taskData.tasks[this._taskData.index - 1]) {
-			return this;
-		}
-		
-		this._taskData.current = this._taskData.tasks[--this._taskData.index];
-		
-		return this;
+		return this._to(this._taskData.index - 1);
 	}
 	
 	/**
 	 * Change the current task to the next task.
 	 */
 	next() {
-		if (!this._taskData.tasks[this._taskData.index + 1]) {
-			return this;
-		}
-		
-		this._taskData.current = this._taskData.tasks[++this._taskData.index];
-		
-		return this;
+		return this._to(this._taskData.index + 1);
 	}
 	
 	/**
 	 * Change the current task to the specified task.
 	 */
 	to(index: number) {
-		if (!this._taskData.tasks[index]) {
-			return this;
-		}
-		
-		this._taskData.current = this._taskData.tasks[this._taskData.index = Number(index)];
+		return this._to(index);
+	}
+	
+	/**
+	 * Skips all tasks and changes to the finished state.
+	 */
+	finish() {
+		this._taskData.index = -1;
 		
 		return this;
 	}
 	
 	/**
-	 * Cancel all tasks and leave them unregistered.
-	 * @since 1.0.1
+	 * Cancel all task and leave them unregistered.
 	 */
 	reset() {
-		this._taskData.tasks = [];
-		this._taskData.current = null;
-		this._taskData.index = 0;
-		
-		return this;
-	}
-	
-	/**
-	 * Add the task to the end of the list.
-	 * @since 1.0.1
-	 */
-	add(funcs: TTaskDelegate | TTaskDelegate[]) {
-		if (funcs instanceof Function) {
-			funcs = [funcs];
-		}
-		
-		const tasks: TTaskDelegate[] = this._taskData.tasks;
-		const f = tasks.length === 0;
-		
-		for (let i = 0; i < funcs.length; i++) {
-			tasks.push(funcs[i]);
-		}
-			
-		if (f) {
- 			this.first();
-		}
-		
-		return this;
-	}
-	
-	/**
-	 * Replace the task list with the new task list.
-	 * @since 1.0.1
-	 */
-	replace(funcs: TTaskDelegate | TTaskDelegate[]) {
-		if (funcs instanceof Function) {
-			funcs = [funcs];
-		}
-		
-		this.reset();
-		
-		const tasks: TTaskDelegate[] = this._taskData.tasks;
-		
-		this._taskData.tasks = funcs;
-		
-		this.first();
+		this._taskData.callbacks = [];
+		this._taskData.index = -1;
+		this._taskData.value = null;
 		
 		return this;
 	}
@@ -160,8 +135,13 @@ export class Task {
 	 * Destroy instance.
 	 */
 	destroy(): void {
-		this._taskData.context = null;
-		this._taskData.tasks = [];
-		this._taskData.current = null
+		this.reset();
+	}
+	
+	/**
+	 * The value returned by the last task executed.
+	 */
+	get value(): any {
+		return this._taskData.value;
 	}
 }

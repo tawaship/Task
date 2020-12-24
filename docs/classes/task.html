@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Task | @tawaship/task - v1.0.1</title>
+	<title>Task | @tawaship/task - v1.1.0</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@tawaship/task - v1.0.1</a>
+					<a href="../index.html" class="title">@tawaship/task - v1.1.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -94,18 +94,20 @@
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-accessor tsd-parent-kind-class"><a href="task.html#enabled" class="tsd-kind-icon">enabled</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="task.html#value" class="tsd-kind-icon">value</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="task.html#_to" class="tsd-kind-icon">_to</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="task.html#add" class="tsd-kind-icon">add</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="task.html#destroy" class="tsd-kind-icon">destroy</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="task.html#done" class="tsd-kind-icon">done</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="task.html#finish" class="tsd-kind-icon">finish</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="task.html#first" class="tsd-kind-icon">first</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="task.html#next" class="tsd-kind-icon">next</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="task.html#prev" class="tsd-kind-icon">prev</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="task.html#replace" class="tsd-kind-icon">replace</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="task.html#reset" class="tsd-kind-icon">reset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="task.html#to" class="tsd-kind-icon">to</a></li>
 							</ul>
@@ -119,22 +121,22 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Task<span class="tsd-signature-symbol">(</span>tasks<span class="tsd-signature-symbol">: </span><a href="../globals.html#ttaskdelegate" class="tsd-signature-type">TTaskDelegate</a><span class="tsd-signature-symbol"> | </span><a href="../globals.html#ttaskdelegate" class="tsd-signature-type">TTaskDelegate</a><span class="tsd-signature-symbol">[]</span>, context<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="task.html" class="tsd-signature-type">Task</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Task<span class="tsd-signature-symbol">(</span>callbacks<span class="tsd-signature-symbol">: </span><a href="../interfaces/itaskdelegate.html" class="tsd-signature-type">ITaskDelegate</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/itaskdelegate.html" class="tsd-signature-type">ITaskDelegate</a><span class="tsd-signature-symbol">[]</span>, context<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="task.html" class="tsd-signature-type">Task</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L12">modules/Task.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L17">modules/Task.ts:17</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>tasks: <a href="../globals.html#ttaskdelegate" class="tsd-signature-type">TTaskDelegate</a><span class="tsd-signature-symbol"> | </span><a href="../globals.html#ttaskdelegate" class="tsd-signature-type">TTaskDelegate</a><span class="tsd-signature-symbol">[]</span></h5>
+									<h5>callbacks: <a href="../interfaces/itaskdelegate.html" class="tsd-signature-type">ITaskDelegate</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/itaskdelegate.html" class="tsd-signature-type">ITaskDelegate</a><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> context: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = null</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> context: <span class="tsd-signature-type">unknown</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="task.html" class="tsd-signature-type">Task</a></h4>
@@ -150,7 +152,7 @@
 					<div class="tsd-signature tsd-kind-icon">_task<wbr>Data<span class="tsd-signature-symbol">:</span> <a href="../interfaces/itaskdata.html" class="tsd-signature-type">ITaskData</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L12">modules/Task.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L17">modules/Task.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -168,7 +170,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L33">modules/Task.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L34">modules/Task.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -181,7 +183,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L37">modules/Task.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L38">modules/Task.ts:38</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -199,36 +201,76 @@
 						</li>
 					</ul>
 				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="add" class="tsd-anchor"></a>
-					<h3>add</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>funcs<span class="tsd-signature-symbol">: </span><a href="../globals.html#ttaskdelegate" class="tsd-signature-type">TTaskDelegate</a><span class="tsd-signature-symbol"> | </span><a href="../globals.html#ttaskdelegate" class="tsd-signature-type">TTaskDelegate</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="value" class="tsd-anchor"></a>
+					<h3>value</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> value<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L120">modules/Task.ts:120</a></li>
+									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L144">modules/Task.ts:144</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>The value returned by the last task executed.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="_to" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _to</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">_to<span class="tsd-signature-symbol">(</span>index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L80">modules/Task.ts:80</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>index: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="add" class="tsd-anchor"></a>
+					<h3>add</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>callbacks<span class="tsd-signature-symbol">: </span><a href="../interfaces/itaskdelegate.html" class="tsd-signature-type">ITaskDelegate</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/itaskdelegate.html" class="tsd-signature-type">ITaskDelegate</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L45">modules/Task.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Add the task to the end of the list.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>since</dt>
-									<dd><p>1.0.1</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>funcs: <a href="../globals.html#ttaskdelegate" class="tsd-signature-type">TTaskDelegate</a><span class="tsd-signature-symbol"> | </span><a href="../globals.html#ttaskdelegate" class="tsd-signature-type">TTaskDelegate</a><span class="tsd-signature-symbol">[]</span></h5>
+									<h5>callbacks: <a href="../interfaces/itaskdelegate.html" class="tsd-signature-type">ITaskDelegate</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/itaskdelegate.html" class="tsd-signature-type">ITaskDelegate</a><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -245,7 +287,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L162">modules/Task.ts:162</a></li>
+									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L137">modules/Task.ts:137</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -267,7 +309,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L44">modules/Task.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L67">modules/Task.ts:67</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -286,6 +328,28 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="finish" class="tsd-anchor"></a>
+					<h3>finish</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">finish<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L117">modules/Task.ts:117</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Skips all tasks and changes to the finished state.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="first" class="tsd-anchor"></a>
 					<h3>first</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -295,7 +359,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L55">modules/Task.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L89">modules/Task.ts:89</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -317,7 +381,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L81">modules/Task.ts:81</a></li>
+									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L103">modules/Task.ts:103</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -339,7 +403,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L68">modules/Task.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L96">modules/Task.ts:96</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -347,39 +411,6 @@
 									<p>Change the current task to the previos task.</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="replace" class="tsd-anchor"></a>
-					<h3>replace</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">replace<span class="tsd-signature-symbol">(</span>funcs<span class="tsd-signature-symbol">: </span><a href="../globals.html#ttaskdelegate" class="tsd-signature-type">TTaskDelegate</a><span class="tsd-signature-symbol"> | </span><a href="../globals.html#ttaskdelegate" class="tsd-signature-type">TTaskDelegate</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L143">modules/Task.ts:143</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Replace the task list with the new task list.</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>since</dt>
-									<dd><p>1.0.1</p>
-									</dd>
-								</dl>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>funcs: <a href="../globals.html#ttaskdelegate" class="tsd-signature-type">TTaskDelegate</a><span class="tsd-signature-symbol"> | </span><a href="../globals.html#ttaskdelegate" class="tsd-signature-type">TTaskDelegate</a><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
 						</li>
 					</ul>
@@ -394,18 +425,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L108">modules/Task.ts:108</a></li>
+									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L126">modules/Task.ts:126</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Cancel all tasks and leave them unregistered.</p>
+									<p>Cancel all task and leave them unregistered.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>since</dt>
-									<dd><p>1.0.1</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
 						</li>
@@ -421,7 +447,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L94">modules/Task.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/tawaship/Task/blob/master/src/modules/Task.ts#L110">modules/Task.ts:110</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -465,6 +491,12 @@
 							<li class=" tsd-kind-accessor tsd-parent-kind-class">
 								<a href="task.html#enabled" class="tsd-kind-icon">enabled</a>
 							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="task.html#value" class="tsd-kind-icon">value</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="task.html#_to" class="tsd-kind-icon">_to</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="task.html#add" class="tsd-kind-icon">add</a>
 							</li>
@@ -473,6 +505,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="task.html#done" class="tsd-kind-icon">done</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="task.html#finish" class="tsd-kind-icon">finish</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="task.html#first" class="tsd-kind-icon">first</a>
@@ -484,9 +519,6 @@
 								<a href="task.html#prev" class="tsd-kind-icon">prev</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="task.html#replace" class="tsd-kind-icon">replace</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="task.html#reset" class="tsd-kind-icon">reset</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -496,11 +528,11 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface">
+					<li class=" tsd-kind-interface tsd-is-private">
 						<a href="../interfaces/itaskdata.html" class="tsd-kind-icon">ITask<wbr>Data</a>
 					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="../globals.html#ttaskdelegate" class="tsd-kind-icon">TTask<wbr>Delegate</a>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/itaskdelegate.html" class="tsd-kind-icon">ITask<wbr>Delegate</a>
 					</li>
 				</ul>
 			</nav>
