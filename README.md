@@ -136,26 +136,6 @@ const task = new Task([
 console.log(task.next().done()); // 2
 ```
 
-### Replace
-```javascript
-const task = new Task([
-	function() {
-		return 1
-	}
-])
-.replace([
-	function() {
-		return 2;
-	},
-	function() {
-		return 5;
-	}
-]);
-
-console.log(task.first().done()); // 2
-console.log(task.next().done()); // 5
-```
-
 ### Reset
 ```javascript
 const task = new Task([
@@ -177,6 +157,24 @@ const task = new Task(
 );
 task.done(1, 2, 3);
 ```
+
+### Returned value
+```javascript
+const task = new Task([
+	function() {
+		return 1;
+	},
+	function() {
+		return 2;
+	}
+]);
+task.first().done();
+console.log(task.value); // 1
+
+task.next().done();
+console.log(task.value); // 2
+```
+
 
 ### Specify the context
 ```javascript
@@ -203,4 +201,17 @@ const task = new Task(
 , a);
 
 console.log(task.done()); // Window
+```
+
+### Finish
+```javascript
+let a = {hoge: 1};
+const task = new Task(
+	function() {
+		this.moga = 2;
+		return this;
+	}
+, a);
+task.first().finish().done();
+console.log(a); // {hoge: 1}
 ```
